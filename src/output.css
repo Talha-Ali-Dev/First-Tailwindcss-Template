@@ -286,6 +286,9 @@
       border-color: color-mix(in oklab, var(--color-neutral-100) 10%, transparent);
     }
   }
+  .bg-\[\#8B0C73\] {
+    background-color: #8B0C73;
+  }
   .bg-\[\#016339\] {
     background-color: #016339;
   }
@@ -396,6 +399,9 @@
   @media (hover: hover) {
     .group-hover\:rotate-180:is(:where(.group):hover *) {
       rotate: 180deg;
+    }
+    .hover\:bg-\[\#8B0C73\]\/80:hover {
+      background-color: color-mix(in oklab, #8B0C73 80%, transparent);
     }
     .hover\:bg-\[\#016339\]\/80:hover {
       background-color: color-mix(in oklab, #016339 80%, transparent);
