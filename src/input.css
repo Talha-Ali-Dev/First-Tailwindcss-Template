@@ -10,5 +10,15 @@
     --color-txt: #949899;
     --color-accent: #4acd8b;
     --color-borderMain: rgb(245 245 245 / 10%);
+    --animate-fade-in: fadeIn 600ms ease-out forwards;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
