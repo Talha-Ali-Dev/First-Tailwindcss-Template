@@ -1,21 +1,30 @@
 let dropdowns = document.querySelectorAll(".dropdown-opener");
 
 dropdowns.forEach((dropdown) => {
+  dropdown.addEventListener("mouseenter", () => {
+    let target = dropdown.dataset.target;
+    let targetElement = document.getElementById(target);
 
-    dropdown.addEventListener("mouseenter", () => {
+    targetElement.classList.remove("hidden");
+  });
 
-        let target = dropdown.dataset.target;
-        let targetElement = document.getElementById(target);
+  dropdown.addEventListener("mouseleave", () => {
+    let target = dropdown.dataset.target;
+    let targetElement = document.getElementById(target);
 
-        targetElement.classList.remove("hidden");
-    });
+    targetElement.classList.add("hidden");
+  });
+});
 
-    dropdown.addEventListener("mouseleave", () => {
+const chatCopy = document.querySelector(".chat-copy");
+const chatCopyParent = document.querySelector(".chat-copy-parent");
 
-        let target = dropdown.dataset.target;
-        let targetElement = document.getElementById(target);
+chatCopyParent.addEventListener("mouseenter", (e) => {
+  chatCopy.style.opacity = "1";
+  chatCopy.style.top = e.clientY + 'px';
+  chatCopy.style.left = e.clientX + 'px';
+});
 
-        targetElement.classList.add("hidden");
-    });
-
+chatCopyParent.addEventListener("mouseleave", () => {
+  chatCopy.style.opacity = "0";
 });
