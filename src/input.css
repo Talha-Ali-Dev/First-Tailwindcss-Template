@@ -22,3 +22,21 @@
         opacity: 1;
     }
 }
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.animate-enter {
+  animation: enter 1s ease-out forwards;
+}

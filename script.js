@@ -48,3 +48,26 @@ videoBtn.forEach((btn) => {
     targetVideo.play();
   });
 });
+
+// for code block
+
+const codeBtns = document.querySelectorAll("#code-btns button");
+codeBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    let codeText = document.querySelector(".code-text");
+    let target = btn.dataset.target;
+    let targetEl = document.getElementById(target);
+    let myCodeContainer = document.querySelectorAll(".code-cont");
+    myCodeContainer.forEach((cont) => {
+      cont.classList.add("hidden");
+    });
+    targetEl.classList.remove("hidden");
+    codeText.innerText = btn.dataset.value;
+    // Restart animation
+    codeText.classList.remove("animate-enter");
+
+    void codeText.offsetWidth;
+
+    codeText.classList.add("animate-enter");
+  });
+});

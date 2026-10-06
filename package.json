@@ -21,6 +21,7 @@
   "homepage": "https://github.com/Talha-Ali-Dev/First-Tailwindcss-Template#readme",
   "dependencies": {
     "@tailwindcss/cli": "^4.3.3",
+    "shiki": "^4.5.0",
     "tailwindcss": "^4.3.3"
   }
 }
