@@ -31,7 +31,6 @@ chatCopyParent.addEventListener("mouseleave", () => {
 });
 
 // videos
-
 const videoBtn = document.querySelectorAll(".video-btn");
 const videos = document.querySelectorAll(".videos video");
 
