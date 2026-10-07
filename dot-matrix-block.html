@@ -1,0 +1,84 @@
+<!-- Remove this line if Tailwind is already loaded on your page -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- ============ PASTE FROM HERE ============ -->
+<section id="dm-block" data-value="111.2K" aria-label="111.2K" role="img"
+  class="relative h-87.5 w-full overflow-hidden bg-[#141414]">
+  <div id="dm-grid" class="absolute inset-0 grid content-center justify-center"></div>
+</section>
+
+<script>
+  (function () {
+    const root = document.getElementById("dm-block");
+    const grid = document.getElementById("dm-grid");
+    const value = root.dataset.value;
+
+    // 5x7 glyphs
+    const G = {
+      "0": [".###.", "#...#", "#..##", "#.#.#", "##..#", "#...#", ".###."],
+      "1": ["..#..", ".##..", "..#..", "..#..", "..#..", "..#..", ".###."],
+      "2": [".###.", "#...#", "....#", "...#.", "..#..", ".#...", "#####"],
+      "3": ["####.", "....#", "....#", ".###.", "....#", "....#", "####."],
+      "4": ["...#.", "..##.", ".#.#.", "#..#.", "#####", "...#.", "...#."],
+      "5": ["#####", "#....", "####.", "....#", "....#", "#...#", ".###."],
+      "6": ["..##.", ".#...", "#....", "####.", "#...#", "#...#", ".###."],
+      "7": ["#####", "....#", "...#.", "..#..", ".#...", ".#...", ".#..."],
+      "8": [".###.", "#...#", "#...#", ".###.", "#...#", "#...#", ".###."],
+      "9": [".###.", "#...#", "#...#", ".####", "....#", "...#.", ".##.."],
+      "K": ["#...#", "#..#.", "#.#..", "##...", "#.#..", "#..#.", "#...#"],
+      "M": ["#...#", "##.##", "#.#.#", "#.#.#", "#...#", "#...#", "#...#"],
+      "B": ["####.", "#...#", "#...#", "####.", "#...#", "#...#", "####."],
+      ".": [".....", ".....", ".....", ".....", ".....", ".....", "..#.."]
+    };
+
+    const LIT = ["#86e0b3", "#34d399", "#2fc58b", "#10b981", "#7fd8ae", "#34d399", "#0a6b4a"];
+    const PITCH = 11.7;   // px per cell
+    const rand = (a) => a[Math.floor(Math.random() * a.length)];
+
+    function build() {
+      const w = root.clientWidth, h = root.clientHeight;
+      const chars = [...value];
+      const textCols = chars.length * 6 - 1;
+      const cell = Math.min(PITCH, w / (textCols + 6));
+      const cols = Math.floor(w / cell), rows = Math.floor(h / cell);
+
+      // which cells are lit
+      const lit = new Map();
+      const c0 = Math.floor((cols - textCols) / 2);
+      const r0 = Math.floor((rows - 7) / 2);
+      chars.forEach((ch, i) => {
+        (G[ch] || G["."]).forEach((line, r) =>
+          [...line].forEach((p, c) => {
+            if (p === "#") lit.set((r0 + r) * cols + c0 + i * 6 + c, true);
+          })
+        );
+      });
+
+      grid.style.gridTemplateColumns = `repeat(${cols}, ${cell}px)`;
+      grid.style.gridAutoRows = `${cell}px`;
+
+      const frag = document.createDocumentFragment();
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const d = document.createElement("div");
+          d.className = "m-px rounded-[3px]";
+          if (lit.has(r * cols + c)) {
+            d.style.background = rand(LIT);
+          } else {
+            // dim ambient dots, fading toward the edges
+            const dx = (c - cols / 2) / (cols / 2), dy = (r - rows / 2) / (rows / 2);
+            const fall = Math.max(0, 1 - Math.hypot(dx, dy * 0.9));
+            d.style.background = `rgba(255,255,255,${(Math.random() * 0.1 * fall + 0.012).toFixed(3)})`;
+          }
+          frag.appendChild(d);
+        }
+      }
+      grid.replaceChildren(frag);
+    }
+
+    build();
+    let t;
+    new ResizeObserver(() => { clearTimeout(t); t = setTimeout(build, 120); }).observe(root);
+  })();
+</script>
+<!-- ============ PASTE TO HERE ============ -->
