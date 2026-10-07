@@ -407,12 +407,6 @@
   .h-\[60\%\] {
     height: 60%;
   }
-  .h-\[100\%\] {
-    height: 100%;
-  }
-  .h-\[350px\] {
-    height: 350px;
-  }
   .h-auto {
     height: auto;
   }
@@ -454,12 +448,6 @@
   }
   .w-\[35\%\] {
     width: 35%;
-  }
-  .w-\[36\%\] {
-    width: 36%;
-  }
-  .w-\[40\%\] {
-    width: 40%;
   }
   .w-\[50\%\] {
     width: 50%;
@@ -614,6 +602,15 @@
   .gap-12 {
     gap: calc(var(--spacing) * 12);
   }
+  .gap-20 {
+    gap: calc(var(--spacing) * 20);
+  }
+  .gap-30 {
+    gap: calc(var(--spacing) * 30);
+  }
+  .gap-40 {
+    gap: calc(var(--spacing) * 40);
+  }
   .self-end {
     align-self: flex-end;
   }
@@ -761,9 +758,6 @@
   .bg-\[\#141615\]\/5 {
     background-color: color-mix(in oklab, #141615 5%, transparent);
   }
-  .bg-\[white\/10\] {
-    background-color: white/10;
-  }
   .bg-neutral-50 {
     background-color: var(--color-neutral-50);
   }
@@ -793,12 +787,6 @@
   }
   .bg-white {
     background-color: var(--color-white);
-  }
-  .bg-white\/6 {
-    background-color: color-mix(in srgb, #fff 6%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-white) 6%, transparent);
-    }
   }
   .bg-white\/8 {
     background-color: color-mix(in srgb, #fff 8%, transparent);
@@ -857,13 +845,6 @@
     --tw-mask-linear: var(--tw-mask-left), var(--tw-mask-right), var(--tw-mask-bottom), var(--tw-mask-top);
     --tw-mask-right: linear-gradient(to right, var(--tw-mask-right-from-color) var(--tw-mask-right-from-position), var(--tw-mask-right-to-color) var(--tw-mask-right-to-position));
     --tw-mask-right-from-position: calc(var(--spacing) * 50);
-  }
-  .mask-r-from-50\% {
-    mask-image: var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic);
-    mask-composite: intersect;
-    --tw-mask-linear: var(--tw-mask-left), var(--tw-mask-right), var(--tw-mask-bottom), var(--tw-mask-top);
-    --tw-mask-right: linear-gradient(to right, var(--tw-mask-right-from-color) var(--tw-mask-right-from-position), var(--tw-mask-right-to-color) var(--tw-mask-right-to-position));
-    --tw-mask-right-from-position: 50%;
   }
   .mask-radial-from-50 {
     mask-image: var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic);
@@ -947,6 +928,9 @@
   }
   .py-10 {
     padding-block: calc(var(--spacing) * 10);
+  }
+  .py-20 {
+    padding-block: calc(var(--spacing) * 20);
   }
   .pt-2 {
     padding-top: calc(var(--spacing) * 2);
@@ -1094,6 +1078,12 @@
   }
   .text-heading {
     color: var(--color-heading);
+  }
+  .text-heading\/10 {
+    color: color-mix(in srgb, #edefee 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-heading) 10%, transparent);
+    }
   }
   .text-heading\/70 {
     color: color-mix(in srgb, #edefee 70%, transparent);
@@ -1358,6 +1348,12 @@
     }
     .lg\:pt-30 {
       padding-top: calc(var(--spacing) * 30);
+    }
+    .lg\:pb-8 {
+      padding-bottom: calc(var(--spacing) * 8);
+    }
+    .lg\:pb-10 {
+      padding-bottom: calc(var(--spacing) * 10);
     }
     .lg\:text-4xl {
       font-size: var(--text-4xl);
