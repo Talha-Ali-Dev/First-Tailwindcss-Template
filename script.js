@@ -17,18 +17,44 @@ dropdowns.forEach((dropdown) => {
 });
 
 // mousemove movement
-const chatCopy = document.querySelector(".chat-copy");
-const chatCopyParent = document.querySelector(".chat-copy-parent");
+const chatParent = document.querySelector(".chat-copy-parent");
+const chatCopy = chatParent?.querySelector(".chat-copy");
 
-chatCopyParent.addEventListener("mouseenter", (e) => {
-  chatCopy.style.opacity = "1";
-  chatCopy.style.top = e.clientY + "px";
-  chatCopy.style.left = e.clientX + "px";
-});
+if (chatParent && chatCopy) {
+  let x = 0,
+    y = 0,
+    raf = 0;
 
-chatCopyParent.addEventListener("mouseleave", () => {
-  chatCopy.style.opacity = "0";
-});
+  const render = () => {
+    raf = 0;
+    chatCopy.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+  };
+
+  const track = (e) => {
+    const r = chatParent.getBoundingClientRect();
+    x = e.clientX - r.left;
+    y = e.clientY - r.top;
+  };
+
+  chatParent.addEventListener("pointerenter", (e) => {
+    if (e.pointerType !== "mouse") return; // skip touch/pen
+    track(e);
+    render(); // place it first (no transition on transform)
+    chatCopy.style.opacity = "1";
+  });
+
+  chatParent.addEventListener("pointermove", (e) => {
+    if (e.pointerType !== "mouse") return;
+    track(e);
+    if (!raf) raf = requestAnimationFrame(render); // one update per frame
+  });
+
+  const hide = () => {
+    chatCopy.style.opacity = "0";
+  };
+  chatParent.addEventListener("pointerleave", hide);
+  chatParent.addEventListener("pointercancel", hide);
+}
 
 // videos
 const videoBtn = document.querySelectorAll(".video-btn");
