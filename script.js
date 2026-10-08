@@ -1,20 +1,37 @@
-let dropdowns = document.querySelectorAll(".dropdown-opener");
+const dropdowns = document.querySelectorAll(".dropdown-opener");
 
-dropdowns.forEach((dropdown) => {
-  dropdown.addEventListener("mouseenter", () => {
-    let target = dropdown.dataset.target;
-    let targetElement = document.getElementById(target);
+        dropdowns.forEach((dropdown) => {
+            const targetId = dropdown.dataset.target;
+            const targetElement = document.getElementById(targetId);
+            let closeTimer;
 
-    targetElement.classList.remove("hidden");
-  });
+            if (!targetElement) return;
 
-  dropdown.addEventListener("mouseleave", () => {
-    let target = dropdown.dataset.target;
-    let targetElement = document.getElementById(target);
+            const openDropdown = () => {
+                clearTimeout(closeTimer);
 
-    targetElement.classList.add("hidden");
-  });
-});
+                document.querySelectorAll(".dropdown-item").forEach((menu) => {
+                    if (menu !== targetElement) {
+                        menu.classList.add("hidden");
+                    }
+                });
+
+                targetElement.classList.remove("hidden");
+            };
+
+            const scheduleClose = () => {
+                clearTimeout(closeTimer);
+
+                closeTimer = setTimeout(() => {
+                    targetElement.classList.add("hidden");
+                }, 200);
+            };
+
+            dropdown.addEventListener("mouseenter", openDropdown);
+            dropdown.addEventListener("mouseleave", scheduleClose);
+            targetElement.addEventListener("mouseenter", openDropdown);
+            targetElement.addEventListener("mouseleave", scheduleClose);
+        });
 
 // mousemove movement
 const chatParent = document.querySelector(".chat-copy-parent");
@@ -185,3 +202,4 @@ codeBtns.forEach((btn) => {
     t = setTimeout(build, 120);
   }).observe(root);
 })();
+
