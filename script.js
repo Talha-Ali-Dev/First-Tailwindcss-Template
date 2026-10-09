@@ -1,37 +1,46 @@
-const dropdowns = document.querySelectorAll(".dropdown-opener");
+function initializeDropdowns() {
+  const dropdowns = document.querySelectorAll(".dropdown-opener");
 
-        dropdowns.forEach((dropdown) => {
-            const targetId = dropdown.dataset.target;
-            const targetElement = document.getElementById(targetId);
-            let closeTimer;
+  console.log("Dropdown openers found:", dropdowns.length);
 
-            if (!targetElement) return;
+  dropdowns.forEach((dropdown) => {
+    const targetId = dropdown.dataset.target;
+    const targetElement = document.getElementById(targetId);
 
-            const openDropdown = () => {
-                clearTimeout(closeTimer);
+    let closeTimer;
 
-                document.querySelectorAll(".dropdown-item").forEach((menu) => {
-                    if (menu !== targetElement) {
-                        menu.classList.add("hidden");
-                    }
-                });
+    if (!targetElement) {
+      console.error("Dropdown panel not found:", targetId);
+      return;
+    }
 
-                targetElement.classList.remove("hidden");
-            };
+    const openDropdown = () => {
+      clearTimeout(closeTimer);
 
-            const scheduleClose = () => {
-                clearTimeout(closeTimer);
+      document.querySelectorAll(".dropdown-item").forEach((menu) => {
+        if (menu !== targetElement) {
+          menu.classList.add("hidden");
+        }
+      });
 
-                closeTimer = setTimeout(() => {
-                    targetElement.classList.add("hidden");
-                }, 200);
-            };
+      targetElement.classList.remove("hidden");
+    };
 
-            dropdown.addEventListener("mouseenter", openDropdown);
-            dropdown.addEventListener("mouseleave", scheduleClose);
-            targetElement.addEventListener("mouseenter", openDropdown);
-            targetElement.addEventListener("mouseleave", scheduleClose);
-        });
+    const scheduleClose = () => {
+      clearTimeout(closeTimer);
+
+      closeTimer = setTimeout(() => {
+        targetElement.classList.add("hidden");
+      }, 200);
+    };
+
+    dropdown.addEventListener("mouseenter", openDropdown);
+    dropdown.addEventListener("mouseleave", scheduleClose);
+
+    targetElement.addEventListener("mouseenter", openDropdown);
+    targetElement.addEventListener("mouseleave", scheduleClose);
+  });
+}
 
 // mousemove movement
 const chatParent = document.querySelector(".chat-copy-parent");
@@ -203,3 +212,56 @@ codeBtns.forEach((btn) => {
   }).observe(root);
 })();
 
+// Resuable Component
+function initializeAnimations() {
+  const animatedElements = document.querySelectorAll(".animate");
+
+  animatedElements.forEach((element) => {
+    const rect = element.getBoundingClientRect();
+
+    const isVisible =
+      rect.top < window.innerHeight &&
+      rect.bottom > 0 &&
+      rect.left < window.innerWidth &&
+      rect.right > 0;
+
+    if (isVisible) {
+      element.classList.add("show");
+    }
+  });
+}
+
+function loadComponent(selector, file) {
+  return fetch(file)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Failed to load ${file}: ${response.status}`);
+      }
+
+      return response.text();
+    })
+    .then((data) => {
+      const element = document.querySelector(selector);
+
+      if (!element) {
+        throw new Error(`Element ${selector} not found`);
+      }
+
+      element.innerHTML = data;
+    });
+}
+
+window.addEventListener("scroll", initializeAnimations);
+window.addEventListener("resize", initializeAnimations);
+
+Promise.all([
+  loadComponent("#header", "components/header.html"),
+  loadComponent("#footer", "components/footer.html"),
+])
+  .then(() => {
+    initializeDropdowns();
+    initializeAnimations();
+  })
+  .catch((error) => {
+    console.error("Component loading failed:", error);
+  });
