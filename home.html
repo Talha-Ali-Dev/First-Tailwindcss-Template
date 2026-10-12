@@ -831,14 +831,14 @@
 
         </section>
 
-        <section class="code border-b border-borderMain">
+       <section class="code border-b border-borderMain">
 
             <div class="max-w-6xl mx-auto">
 
                 <div class="py-10 lg:py-20 grid grid-cols-1 lg:grid-cols-2">
                     <div>
                         <h2 class="text-heading text-2xl sm:text-3xl lg:text-4xl sm:leading-11 font-semibold">
-                            <span class="text-txt block">Use Supabase with</span>
+                            <span class="text-txt block">Build with NovaStack and</span>
                             <span class="code-text animate-enter">React</span>
                         </h2>
                     </div>
@@ -929,18 +929,18 @@
                                 <div class="code-block">
                                     <pre>
                                     <code>
-<span class="text-[#BDA4FF]">import </span>{ createClient } <span class="text-[#BDA4FF]">from </span>'<span class="text-[#FFCDA1]">@supabase/supabase-js</span>'
+<span class="text-[#BDA4FF]">import </span>{ createClient } <span class="text-[#BDA4FF]">from </span>'<span class="text-[#FFCDA1]">@novaStack/novaStack-js</span>'
 
-<span class="text-[#BDA4FF]">const</span> <span class="text-[#3ECF8E]"> supabase </span> <span class="text-[#BDA4FF]">= </span> <span class="text-[#3ECF8E]">createClient</span>(
-  process.env.<span class="text-[#3ECF8E]">SUPABASE_URL</span>,
-  process.env.<span class="text-[#3ECF8E]">SUPABASE_ANON_KEY</span>
+<span class="text-[#BDA4FF]">const</span> <span class="text-[#3ECF8E]"> novaStack </span> <span class="text-[#BDA4FF]">= </span> <span class="text-[#3ECF8E]">createClient</span>(
+  process.env.<span class="text-[#3ECF8E]">NOVASTACK_URL</span>,
+  process.env.<span class="text-[#3ECF8E]">NOVASTACK_ANON_KEY</span>
 )
 
 <span class="text-[#BDA4FF]">export default function</span> <span class="text-[#3ECF8E]">App</span>() {
  <span class="text-[#BDA4FF]"> const</span> [<span class="text-[#3ECF8E]">todos</span>, <span class="text-[#3ECF8E]">setTodos</span>] = useState([])
 
   <span class="text-[#3ECF8E]">useEffect</span>(()<span class="text-[#BDA4FF]"> =></span> {
-    supabase.<span class="text-[#3ECF8E]">from</span>('<span class="text-[#FFCDA1]">todos</span>').<span class="text-[#3ECF8E]">select</span>('<span class="text-[#FFCDA1]">*</span>')
+    novaStack.<span class="text-[#3ECF8E]">from</span>('<span class="text-[#FFCDA1]">todos</span>').<span class="text-[#3ECF8E]">select</span>('<span class="text-[#FFCDA1]">*</span>')
       .<span class="text-[#3ECF8E]">then</span>(({ data }) => <span class="text-[#3ECF8E]">setTodos</span>(data))
   }, [])
 
@@ -956,15 +956,15 @@
                                 <div class="code-block">
                                     <pre>
                                     <code>
-<span class="text-[#BDA4FF]">import </span>{ createClient } <span class="text-[#BDA4FF]">from </span>'<span class="text-[#FFCDA1]">@supabase/supabase-js</span>'
+<span class="text-[#BDA4FF]">import </span>{ createClient } <span class="text-[#BDA4FF]">from </span>'<span class="text-[#FFCDA1]">@novaStack/novaStack-js</span>'
 
-<span class="text-[#BDA4FF]">const</span> <span class="text-[#3ECF8E]"> supabase </span> <span class="text-[#BDA4FF]">= </span> <span class="text-[#3ECF8E]">createClient</span>(
-  process.env.<span class="text-[#3ECF8E]">NEXT_PUBLIC_SUPABASE_URL</span>,
-  process.env.<span class="text-[#3ECF8E]">NEXT_PUBLIC_SUPABASE_ANON_KEY</span>
+<span class="text-[#BDA4FF]">const</span> <span class="text-[#3ECF8E]"> novaStack </span> <span class="text-[#BDA4FF]">= </span> <span class="text-[#3ECF8E]">createClient</span>(
+  process.env.<span class="text-[#3ECF8E]">NEXT_PUBLIC_NOVASTACK_URL</span>,
+  process.env.<span class="text-[#3ECF8E]">NEXT_PUBLIC_NOVASTACK_ANON_KEY</span>
 )
 
 <span class="text-[#BDA4FF]">export default async function</span> <span class="text-[#3ECF8E]">Page</span>() {
- <span class="text-[#BDA4FF]"> const</span> {<span class="text-white">data:</span> <span class="text-[#3ECF8E]">todos</span>}<span class="text-[#BDA4FF]"> = await</span> supabase
+ <span class="text-[#BDA4FF]"> const</span> {<span class="text-white">data:</span> <span class="text-[#3ECF8E]">todos</span>}<span class="text-[#BDA4FF]"> = await</span> novaStack
  .<span class="text-[#3ECF8E]">from</span> ('<span class="text-[#FFCDA1]">todos</span>')
  .<span class="text-[#3ECF8E]">select</span> ('<span class="text-[#FFCDA1]">*</span>')
 
@@ -980,19 +980,19 @@
                                 <div class="code-block">
                                     <pre>
                                   <code>
-<span class="line"><span style="color:#BDA4FF">import</span><span style="color:#FFCDA1"> 'package:supabase_flutter/supabase_flutter.dart'</span><span style="color:#FFFFFF">;</span></span>
+<span class="line"><span style="color:#BDA4FF">import</span><span style="color:#FFCDA1"> 'package:novaStack_flutter/novaStack_flutter.dart'</span><span style="color:#FFFFFF">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#FFFFFF">Future&lt;</span><span style="color:#BDA4FF">void</span><span style="color:#FFFFFF">&gt; </span><span style="color:#3ECF8E">main</span><span style="color:#FFFFFF">() </span><span style="color:#BDA4FF">async</span><span style="color:#FFFFFF"> {</span></span>
-<span class="line"><span style="color:#BDA4FF">  await</span><span style="color:#FFFFFF"> Supabase.</span><span style="color:#3ECF8E">initialize</span><span style="color:#FFFFFF">(</span></span>
-<span class="line"><span style="color:#FFFFFF">    url</span><span style="color:#BDA4FF">:</span><span style="color:#FFCDA1"> 'YOUR_SUPABASE_URL'</span><span style="color:#FFFFFF">,</span></span>
-<span class="line"><span style="color:#FFFFFF">    anonKey</span><span style="color:#BDA4FF">:</span><span style="color:#FFCDA1"> 'YOUR_SUPABASE_ANON_KEY'</span><span style="color:#FFFFFF">,</span></span>
+<span class="line"><span style="color:#BDA4FF">  await</span><span style="color:#FFFFFF"> NovaStack.</span><span style="color:#3ECF8E">initialize</span><span style="color:#FFFFFF">(</span></span>
+<span class="line"><span style="color:#FFFFFF">    url</span><span style="color:#BDA4FF">:</span><span style="color:#FFCDA1"> 'YOUR_NOVASTACK_URL'</span><span style="color:#FFFFFF">,</span></span>
+<span class="line"><span style="color:#FFFFFF">    anonKey</span><span style="color:#BDA4FF">:</span><span style="color:#FFCDA1"> 'YOUR_NOVASTACK_ANON_KEY'</span><span style="color:#FFFFFF">,</span></span>
 <span class="line"><span style="color:#FFFFFF">  );</span></span>
 <span class="line"><span style="color:#3ECF8E">  runApp</span><span style="color:#FFFFFF">(MyApp());</span></span>
 <span class="line"><span style="color:#FFFFFF">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#BDA4FF">final</span><span style="color:#FFFFFF"> supabase </span><span style="color:#BDA4FF">=</span><span style="color:#FFFFFF"> Supabase.instance.client;</span></span>
+<span class="line"><span style="color:#BDA4FF">final</span><span style="color:#FFFFFF"> novaStack </span><span style="color:#BDA4FF">=</span><span style="color:#FFFFFF"> NovaStack.instance.client;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#BDA4FF">final</span><span style="color:#FFFFFF"> data </span><span style="color:#BDA4FF">=</span><span style="color:#BDA4FF"> await</span><span style="color:#FFFFFF"> supabase</span></span>
+<span class="line"><span style="color:#BDA4FF">final</span><span style="color:#FFFFFF"> data </span><span style="color:#BDA4FF">=</span><span style="color:#BDA4FF"> await</span><span style="color:#FFFFFF"> novaStack</span></span>
 <span class="line"><span style="color:#FFFFFF">    .</span><span style="color:#3ECF8E">from</span><span style="color:#FFFFFF">(</span><span style="color:#FFCDA1">'todos'</span><span style="color:#FFFFFF">)</span></span>
 <span class="line"><span style="color:#FFFFFF">    .</span><span style="color:#3ECF8E">select</span><span style="color:#FFFFFF">(</span><span style="color:#FFCDA1">'*'</span><span style="color:#FFFFFF">);</span></span></code>
                                 </pre>
@@ -1005,17 +1005,17 @@
                                     <pre>
                                   <code>
 <span class="line"><span style="color:#FFFFFF">&lt;</span><span style="color:#3ECF8E">script</span><span style="color:#FFFFFF">&gt;</span></span>
-<span class="line"><span style="color:#BDA4FF">  import</span><span style="color:#FFFFFF"> { createClient } </span><span style="color:#BDA4FF">from</span><span style="color:#FFFFFF"> '</span><span style="color:#FFCDA1">@supabase/supabase-js</span><span style="color:#FFFFFF">'</span></span>
+<span class="line"><span style="color:#BDA4FF">  import</span><span style="color:#FFFFFF"> { createClient } </span><span style="color:#BDA4FF">from</span><span style="color:#FFFFFF"> '</span><span style="color:#FFCDA1">@novaStack/novaStack-js</span><span style="color:#FFFFFF">'</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#BDA4FF">  const</span><span style="color:#3ECF8E"> supabase</span><span style="color:#BDA4FF"> =</span><span style="color:#3ECF8E"> createClient</span><span style="color:#FFFFFF">(</span></span>
-<span class="line"><span style="color:#3ECF8E">    PUBLIC_SUPABASE_URL</span><span style="color:#FFFFFF">,</span></span>
-<span class="line"><span style="color:#3ECF8E">    PUBLIC_SUPABASE_ANON_KEY</span></span>
+<span class="line"><span style="color:#BDA4FF">  const</span><span style="color:#3ECF8E"> novaStack</span><span style="color:#BDA4FF"> =</span><span style="color:#3ECF8E"> createClient</span><span style="color:#FFFFFF">(</span></span>
+<span class="line"><span style="color:#3ECF8E">    PUBLIC_NOVASTACK_URL</span><span style="color:#FFFFFF">,</span></span>
+<span class="line"><span style="color:#3ECF8E">    PUBLIC_NOVASTACK_ANON_KEY</span></span>
 <span class="line"><span style="color:#FFFFFF">  )</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#BDA4FF">  let</span><span style="color:#FFFFFF"> todos </span><span style="color:#BDA4FF">=</span><span style="color:#FFFFFF"> []</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#BDA4FF">  async</span><span style="color:#BDA4FF"> function</span><span style="color:#3ECF8E"> loadTodos</span><span style="color:#FFFFFF">() {</span></span>
-<span class="line"><span style="color:#BDA4FF">    const</span><span style="color:#FFFFFF"> { </span><span style="color:#3ECF8E">data</span><span style="color:#FFFFFF"> } </span><span style="color:#BDA4FF">=</span><span style="color:#BDA4FF"> await</span><span style="color:#FFFFFF"> supabase</span></span>
+<span class="line"><span style="color:#BDA4FF">    const</span><span style="color:#FFFFFF"> { </span><span style="color:#3ECF8E">data</span><span style="color:#FFFFFF"> } </span><span style="color:#BDA4FF">=</span><span style="color:#BDA4FF"> await</span><span style="color:#FFFFFF"> novaStack</span></span>
 <span class="line"><span style="color:#FFFFFF">      .</span><span style="color:#3ECF8E">from</span><span style="color:#FFFFFF">(</span><span style="color:#FFFFFF">'</span><span style="color:#FFCDA1">todos</span><span style="color:#FFFFFF">'</span><span style="color:#FFFFFF">).</span><span style="color:#3ECF8E">select</span><span style="color:#FFFFFF">(</span><span style="color:#FFFFFF">'</span><span style="color:#FFCDA1">*</span><span style="color:#FFFFFF">'</span><span style="color:#FFFFFF">)</span></span>
 <span class="line"><span style="color:#FFFFFF">    todos </span><span style="color:#BDA4FF">=</span><span style="color:#FFFFFF"> data</span></span>
 <span class="line"><span style="color:#FFFFFF">  }</span></span>
@@ -1029,18 +1029,18 @@
                                     <pre>
                                  <code>
 <span class="line"><span style="color:#FFFFFF">&lt;</span><span style="color:#3ECF8E">script</span><span style="color:#3ECF8E"> setup</span><span style="color:#FFFFFF">&gt;</span></span>
-<span class="line"><span style="color:#BDA4FF">import</span><span style="color:#FFFFFF"> { createClient } </span><span style="color:#BDA4FF">from</span><span style="color:#FFFFFF"> '</span><span style="color:#FFCDA1">@supabase/supabase-js</span><span style="color:#FFFFFF">'</span></span>
+<span class="line"><span style="color:#BDA4FF">import</span><span style="color:#FFFFFF"> { createClient } </span><span style="color:#BDA4FF">from</span><span style="color:#FFFFFF"> '</span><span style="color:#FFCDA1">@novaStack/novaStack-js</span><span style="color:#FFFFFF">'</span></span>
 <span class="line"><span style="color:#BDA4FF">import</span><span style="color:#FFFFFF"> { ref, onMounted } </span><span style="color:#BDA4FF">from</span><span style="color:#FFFFFF"> '</span><span style="color:#FFCDA1">vue</span><span style="color:#FFFFFF">'</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#BDA4FF">const</span><span style="color:#3ECF8E"> supabase</span><span style="color:#BDA4FF"> =</span><span style="color:#3ECF8E"> createClient</span><span style="color:#FFFFFF">(</span></span>
-<span class="line"><span style="color:#BDA4FF">  import</span><span style="color:#FFFFFF">.meta.env.</span><span style="color:#3ECF8E">VITE_SUPABASE_URL</span><span style="color:#FFFFFF">,</span></span>
-<span class="line"><span style="color:#BDA4FF">  import</span><span style="color:#FFFFFF">.meta.env.</span><span style="color:#3ECF8E">VITE_SUPABASE_ANON_KEY</span></span>
+<span class="line"><span style="color:#BDA4FF">const</span><span style="color:#3ECF8E"> novaStack</span><span style="color:#BDA4FF"> =</span><span style="color:#3ECF8E"> createClient</span><span style="color:#FFFFFF">(</span></span>
+<span class="line"><span style="color:#BDA4FF">  import</span><span style="color:#FFFFFF">.meta.env.</span><span style="color:#3ECF8E">VITE_NOVASTACK_URL</span><span style="color:#FFFFFF">,</span></span>
+<span class="line"><span style="color:#BDA4FF">  import</span><span style="color:#FFFFFF">.meta.env.</span><span style="color:#3ECF8E">VITE_NOVASTACK_ANON_KEY</span></span>
 <span class="line"><span style="color:#FFFFFF">)</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#BDA4FF">const</span><span style="color:#3ECF8E"> todos</span><span style="color:#BDA4FF"> =</span><span style="color:#3ECF8E"> ref</span><span style="color:#FFFFFF">([])</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#3ECF8E">onMounted</span><span style="color:#FFFFFF">(</span><span style="color:#BDA4FF">async</span><span style="color:#FFFFFF"> () </span><span style="color:#BDA4FF">=&gt;</span><span style="color:#FFFFFF"> {</span></span>
-<span class="line"><span style="color:#BDA4FF">  const</span><span style="color:#FFFFFF"> { </span><span style="color:#3ECF8E">data</span><span style="color:#FFFFFF"> } </span><span style="color:#BDA4FF">=</span><span style="color:#BDA4FF"> await</span><span style="color:#FFFFFF"> supabase</span></span>
+<span class="line"><span style="color:#BDA4FF">  const</span><span style="color:#FFFFFF"> { </span><span style="color:#3ECF8E">data</span><span style="color:#FFFFFF"> } </span><span style="color:#BDA4FF">=</span><span style="color:#BDA4FF"> await</span><span style="color:#FFFFFF"> novaStack</span></span>
 <span class="line"><span style="color:#FFFFFF">    .</span><span style="color:#3ECF8E">from</span><span style="color:#FFFFFF">(</span><span style="color:#FFFFFF">'</span><span style="color:#FFCDA1">todos</span><span style="color:#FFFFFF">'</span><span style="color:#FFFFFF">).</span><span style="color:#3ECF8E">select</span><span style="color:#FFFFFF">(</span><span style="color:#FFFFFF">'</span><span style="color:#FFCDA1">*</span><span style="color:#FFFFFF">'</span><span style="color:#FFFFFF">)</span></span>
 <span class="line"><span style="color:#FFFFFF">  todos.</span><span style="color:#3ECF8E">value</span><span style="color:#BDA4FF"> =</span><span style="color:#FFFFFF"> data</span></span>
 <span class="line"><span style="color:#FFFFFF">})</span></span>
@@ -1055,12 +1055,12 @@
                                     <pre>
                                  <code>
 <span class="line"><span style="color:#FFFFFF">&lt;</span><span style="color:#3ECF8E">script</span><span style="color:#3ECF8E"> setup</span><span style="color:#FFFFFF">&gt;</span></span>
-<span class="line"><span style="color:#BDA4FF">const</span><span style="color:#3ECF8E"> supabase</span><span style="color:#BDA4FF"> =</span><span style="color:#3ECF8E"> useSupabaseClient</span><span style="color:#FFFFFF">()</span></span>
+<span class="line"><span style="color:#BDA4FF">const</span><span style="color:#3ECF8E"> novaStack</span><span style="color:#BDA4FF"> =</span><span style="color:#3ECF8E"> useNovaStackClient</span><span style="color:#FFFFFF">()</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#BDA4FF">const</span><span style="color:#FFFFFF"> { data: </span><span style="color:#3ECF8E">todos</span><span style="color:#FFFFFF"> } </span><span style="color:#BDA4FF">=</span><span style="color:#BDA4FF"> await</span><span style="color:#3ECF8E"> useAsyncData</span><span style="color:#FFFFFF">(</span></span>
 <span class="line"><span style="color:#FFFFFF">  '</span><span style="color:#FFCDA1">todos</span><span style="color:#FFFFFF">'</span><span style="color:#FFFFFF">,</span></span>
 <span class="line"><span style="color:#BDA4FF">  async</span><span style="color:#FFFFFF"> () </span><span style="color:#BDA4FF">=&gt;</span><span style="color:#FFFFFF"> {</span></span>
-<span class="line"><span style="color:#BDA4FF">    const</span><span style="color:#FFFFFF"> { </span><span style="color:#3ECF8E">data</span><span style="color:#FFFFFF"> } </span><span style="color:#BDA4FF">=</span><span style="color:#BDA4FF"> await</span><span style="color:#FFFFFF"> supabase</span></span>
+<span class="line"><span style="color:#BDA4FF">    const</span><span style="color:#FFFFFF"> { </span><span style="color:#3ECF8E">data</span><span style="color:#FFFFFF"> } </span><span style="color:#BDA4FF">=</span><span style="color:#BDA4FF"> await</span><span style="color:#FFFFFF"> novaStack</span></span>
 <span class="line"><span style="color:#FFFFFF">      .</span><span style="color:#3ECF8E">from</span><span style="color:#FFFFFF">(</span><span style="color:#FFFFFF">'</span><span style="color:#FFCDA1">todos</span><span style="color:#FFFFFF">'</span><span style="color:#FFFFFF">)</span></span>
 <span class="line"><span style="color:#FFFFFF">      .</span><span style="color:#3ECF8E">select</span><span style="color:#FFFFFF">(</span><span style="color:#FFFFFF">'</span><span style="color:#FFCDA1">*</span><span style="color:#FFFFFF">'</span><span style="color:#FFFFFF">)</span></span>
 <span class="line"><span style="color:#BDA4FF">    return</span><span style="color:#FFFFFF"> data</span></span>
