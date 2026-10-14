@@ -265,4 +265,24 @@ Promise.all([
   .catch((error) => {
     console.error("Component loading failed:", error);
   });
-  
+
+// For Faqs
+const questions = document.querySelectorAll(".faq-question");
+
+questions.forEach((question) => {
+  const answer = document.getElementById(
+    question.getAttribute("aria-controls"),
+  );
+
+  const faqIcon = question.querySelector(".faq-icon");
+
+  question.addEventListener("click", () => {
+    const isOpen = question.getAttribute("aria-expanded") === "true";
+
+    question.setAttribute("aria-expanded", String(!isOpen));
+
+    answer.hidden = isOpen;
+
+    faqIcon.style.transform = isOpen ? "rotate(0deg)" : "rotate(180deg)";
+  });
+});
